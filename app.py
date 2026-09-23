@@ -32,7 +32,7 @@ def add_reminder_controls(response):
         if "reminders.js" not in html:
             response.set_data(html.replace(
                 "</body>",
-                '<script src="/static/reminders.js"></script></body>',
+                '<script src="/static/reminders.js"></script><script src="/static/mobile-navigation.js"></script></body>',
             ))
     return response
 
@@ -289,6 +289,11 @@ def get_patient_data():
 # =========================
 # HOME PAGE
 # =========================
+
+@app.route("/healthz")
+def health_check():
+    return jsonify({"status": "ok"}), 200
+
 
 @app.route("/")
 def home():

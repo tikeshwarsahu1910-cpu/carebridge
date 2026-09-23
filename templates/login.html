@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in — CareBridge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-page">
+    <main class="login-shell">
+        <section class="login-intro">
+            <div class="brand"><div class="brandmark">✚</div><div><b>CareBridge</b><span>Post-discharge companion</span></div></div>
+            <p class="eyebrow">RECOVERY, MADE CLEARER</p>
+            <h1>Support every step<br>home from hospital.</h1>
+            <p>Keep medicines, follow-ups, and family support together in one calm care plan.</p>
+        </section>
+        <section class="login-card" aria-labelledby="login-title">
+            <div class="login-icon">✚</div>
+            <p class="eyebrow">WELCOME BACK</p>
+            <h2 id="login-title">Sign in to CareBridge</h2>
+            <p>Use your account to access your recovery dashboard.</p>
+            <form method="post">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required autofocus>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+                {% if error %}<p class="form-error">{{ error }}</p>{% endif %}
+                <button class="primary full" type="submit">Continue <span>→</span></button>
+            </form>
+            <p class="account-link">New to CareBridge? <a href="{{ url_for('signup') }}">Create an account</a></p>
+        </section>
+    </main>
+</body>
+</html>

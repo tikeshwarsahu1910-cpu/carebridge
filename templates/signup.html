@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account — CareBridge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-page">
+    <main class="login-shell signup-shell">
+        <section class="login-intro"><div class="brand"><div class="brandmark">✚</div><div><b>CareBridge</b><span>Post-discharge companion</span></div></div><p class="eyebrow">YOUR RECOVERY PROFILE</p><h1>Begin your care journey with confidence.</h1><p>Your details help create a more useful recovery dashboard.</p></section>
+        <section class="login-card"><div class="login-icon">✚</div><p class="eyebrow">CREATE ACCOUNT</p><h2>Set up your profile</h2><p>All fields are required to get started.</p>
+            <form method="post" class="signup-form">
+                <div class="form-grid"><div><label for="name">Full name</label><input id="name" name="name" value="{{ values.get('name', '') }}" autocomplete="name" required></div><div><label for="age">Age</label><input id="age" name="age" type="number" min="1" max="120" value="{{ values.get('age', '') }}" required></div></div>
+                <div class="form-grid"><div><label for="mobile">Mobile number</label><input id="mobile" name="mobile" type="tel" value="{{ values.get('mobile', '') }}" autocomplete="tel" required></div><div><label for="email">Email address</label><input id="email" name="email" type="email" value="{{ values.get('email', '') }}" autocomplete="email" required></div></div>
+                <div class="form-grid"><div><label for="blood_group">Blood group</label><select id="blood_group" name="blood_group" required><option value="">Select</option>{% for group in ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'] %}<option value="{{ group }}" {% if values.get('blood_group') == group %}selected{% endif %}>{{ group }}</option>{% endfor %}</select></div><div><label for="weight">Weight (kg)</label><input id="weight" name="weight" type="number" step="0.1" min="1" value="{{ values.get('weight', '') }}" required></div></div>
+                <label for="gender">Gender</label><select id="gender" name="gender" required><option value="">Select</option>{% for option in ['Female', 'Male', 'Non-binary', 'Prefer not to say'] %}<option value="{{ option }}" {% if values.get('gender') == option %}selected{% endif %}>{{ option }}</option>{% endfor %}</select>
+                <label for="password">Create password</label><input id="password" name="password" type="password" minlength="6" autocomplete="new-password" required>
+                {% if error %}<p class="form-error">{{ error }}</p>{% endif %}
+                <button class="primary full" type="submit">Create account <span>→</span></button>
+            </form><p class="account-link">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+        </section>
+    </main>
+</body>
+</html>

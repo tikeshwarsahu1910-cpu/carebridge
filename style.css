@@ -16,6 +16,31 @@ html[lang="hi"] body{font-family:"Noto Sans Devanagari",Inter,sans-serif}
   .sidebar-footer .user-card{display:none}
   .sidebar-actions{width:100%;justify-content:flex-end;margin-top:4px}
 }
+
+/* Phone navigation: one clear menu button that opens a left-side drawer. */
+.mobile-menu-toggle,.mobile-drawer,.mobile-menu-backdrop{display:none}
+@media(max-width:800px){
+  .app-sidebar{display:none!important}
+  .top-header{padding-left:62px}
+  .feature-nav{padding-left:55px}
+  .mobile-menu-toggle{position:fixed;z-index:42;top:15px;left:12px;display:grid;place-items:center;width:38px;height:38px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--primary)}
+  .mobile-menu-toggle span{font-size:23px}
+  .mobile-menu-backdrop{position:fixed;inset:0;z-index:50;background:#06122188;opacity:0;pointer-events:none;transition:opacity .24s ease}
+  .mobile-drawer{position:fixed;z-index:51;inset:0 auto 0 0;display:block;width:min(310px,84vw);padding:18px 14px;overflow-y:auto;background:var(--surface);box-shadow:16px 0 40px #0004;transform:translateX(-105%);transition:transform .28s cubic-bezier(.2,.8,.2,1)}
+  .mobile-drawer-open{overflow:hidden}
+  .mobile-drawer-open .mobile-menu-backdrop{opacity:1;pointer-events:auto}
+  .mobile-drawer-open .mobile-drawer{transform:none}
+  .mobile-drawer-head{display:flex;align-items:center;justify-content:space-between;color:var(--primary);font-size:21px}
+  .mobile-menu-close{display:grid;place-items:center;width:35px;height:35px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--text)}
+  .mobile-drawer-subtitle{margin:3px 0 18px;color:var(--muted);font-size:12px}
+  .mobile-drawer nav{display:grid;gap:3px}
+  .mobile-drawer nav a{display:grid;grid-template-columns:27px 1fr 22px;align-items:center;gap:7px;padding:11px 9px;border-radius:10px;color:var(--text);text-decoration:none;font-size:13px;font-weight:600}
+  .mobile-drawer nav a:hover{background:var(--soft);color:var(--primary)}
+  .mobile-drawer nav a span:first-child{color:var(--primary)}
+  .mobile-drawer nav a span:last-child{color:var(--muted);font-size:18px}
+  .mobile-drawer-controls{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;margin-top:16px;padding-top:15px;border-top:1px solid var(--line)}
+  .mobile-drawer-controls button{display:flex;align-items:center;justify-content:center;gap:5px;min-height:39px;border:1px solid var(--line);border-radius:9px;background:var(--soft);color:var(--primary);font-weight:700}
+}
 button,a,.panel,.metric-grid article,.medicine-row,.caregiver-row{transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,background-color .22s ease,border-color .22s ease,color .22s ease}
 button:active,a:active{transform:scale(.97)}.panel:hover,.metric-grid article:hover{box-shadow:0 10px 28px #20304a14}.popout{animation:pop .38s cubic-bezier(.2,.9,.25,1.25)}@keyframes pop{0%{transform:scale(1)}55%{transform:scale(1.075)}100%{transform:scale(1)}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 /* Dedicated feature pages */
